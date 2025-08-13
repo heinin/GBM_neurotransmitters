@@ -1,0 +1,157 @@
+---
+title: "Plotting neurotransmitter/ion transporter expression in TILs in HGG/GBM tumors"
+author: "heinin"
+date: "2025-08-12"
+output:
+  workflowr::wflow_html:
+    code_folding: hide
+  html_notebook: default
+editor_options:
+  chunk_output_type: console
+---
+
+## Load packages
+
+```{r, warning=F, message=F}
+
+suppressPackageStartupMessages({
+  library(workflowr)
+  library(arrow)
+  library(Seurat)
+  library(SeuratObject)
+  library(SeuratDisk)
+  library(tidyverse)
+  library(tibble)
+  library(ggplot2)
+  library(ggpubr)
+  library(ggrepel)
+  library(googlesheets4)
+  library(workflowr)
+  library(patchwork)
+  library(ggpmisc)
+  library(scProportionTest)})
+
+```
+
+## Environment variables and helper functions
+
+```{r, message = F, warning = F}
+
+setwd("/home/hnatri/GBM_neurotransmitters/")
+set.seed(9999)
+options(scipen = 99999)
+options(ggrepel.max.overlaps = Inf)
+
+source("/home/hnatri/GBM_neurotransmitters/code/13384_tumor_ms_themes.R")
+source("/home/hnatri/GBM_neurotransmitters/code/CART_plot_functions.R")
+
+```
+
+## Marker information
+
+```{r, message = F, warning = F, fig.width = 6, fig.height = 4}
+
+gs4_deauth()
+markers_by_group  <- gs4_get("https://docs.google.com/spreadsheets/d/15X7l9AuNF3vqPQ3ajuB05q8QKK7UZJi9DgYLUPzYkLw/edit?usp=sharing")
+potassium_channels <- read_sheet(markers_by_group, sheet = "Potassium channels")
+potassium_response <- read_sheet(markers_by_group, sheet = "Potassium response")
+dopamine_synthesis <- read_sheet(markers_by_group, sheet = "Dopamine synthesis")
+
+```
+
+## Import data
+
+```{r, message = F, warning = F, fig.width = 6, fig.height = 4}
+
+immune_fibro <- readRDS("/tgen_labs/banovich/BCTCSF/Heini/13384_Tumor/tumor_immune_fibroblast_reclustered_DoubletFinder.rds")
+
+immune_fibro$celltype <- factor(immune_fibro$celltype,
+                                levels = c(paste0("M", seq(1, 9, by = 1)),
+                                           "N1", "B1",
+                                           paste0("L", seq(1, 10, by = 1)),
+                                           paste0("F", seq(1, 3, by = 1))))
+
+lymph <- subset(immune_fibro, subset = celltype %in% c("B1", paste0("L", seq(1, 10, by = 1))))
+
+```
+
+## Violinplots and dotplots by cell type
+
+### Potassium channels
+
+```{r, message = F, warning = F, fig.width = 8, fig.height = 12}
+
+DotPlot(lymph,
+        group.by = "celltype",
+        features = unique(potassium_channels$Gene)) +
+  theme_classic() +
+  coord_flip()
+
+```
+
+```{r, message = F, warning = F, fig.width = 12, fig.height = 70}
+
+VlnPlot(lymph,
+        group.by = "celltype",
+        features = unique(potassium_channels$Gene),
+        pt.size = 0,
+        cols = immune_fibro_celltype_col,
+        ncol = 3,
+        slot = "data") &
+  theme_classic() &
+  NoLegend()
+
+```
+
+### Potassium response
+
+```{r, message = F, warning = F, fig.width = 8, fig.height = 8}
+
+DotPlot(lymph,
+        group.by = "celltype",
+        features = setdiff(unique(potassium_response$Genes), c(NA))) +
+  theme_classic() +
+  coord_flip()
+
+```
+
+```{r, message = F, warning = F, fig.width = 12, fig.height = 38}
+
+VlnPlot(lymph,
+        group.by = "celltype",
+        features = unique(potassium_response$Genes),
+        pt.size = 0,
+        cols = immune_fibro_celltype_col,
+        ncol = 3,
+        slot = "data") &
+  theme_classic() &
+  NoLegend()
+
+```
+
+### Dopamine synthesis
+
+```{r, message = F, warning = F, fig.width = 8, fig.height = 8}
+
+DotPlot(lymph,
+        group.by = "celltype",
+        features = unique(dopamine_synthesis$Gene)) +
+  theme_classic() +
+  coord_flip()
+
+```
+
+```{r, message = F, warning = F, fig.width = 12, fig.height = 37}
+
+VlnPlot(lymph,
+        group.by = "celltype",
+        features = unique(dopamine_synthesis$Gene),
+        pt.size = 0,
+        cols = immune_fibro_celltype_col,
+        ncol = 3,
+        slot = "data") &
+  theme_classic() &
+  NoLegend()
+
+```
+
