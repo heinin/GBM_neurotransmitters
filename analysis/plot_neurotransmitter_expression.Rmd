@@ -56,12 +56,21 @@ markers_by_group  <- gs4_get("https://docs.google.com/spreadsheets/d/15X7l9AuNF3
 potassium_channels <- read_sheet(markers_by_group, sheet = "Potassium channels")
 potassium_response <- read_sheet(markers_by_group, sheet = "Potassium response")
 dopamine_synthesis <- read_sheet(markers_by_group, sheet = "Dopamine synthesis")
+nt_receptors <- read_sheet(markers_by_group, sheet = "NT receptors")
+histamine_synthesis <- read_sheet(markers_by_group, sheet = "Histamine synthesis")
 
 ```
 
 ## Import data
 
 ```{r, message = F, warning = F, fig.width = 6, fig.height = 4}
+
+tumors <- readRDS("/tgen_labs/banovich/BCTCSF/Heini/13384_Tumor/tumor_integrated_UPN109pre_noUPN208_soupX_snn_metadata_no4_7_11.rds")
+
+tumors$lineage <- ifelse(tumors$celltype %in%  c("Olig1", "Olig2"), "Olig",
+                         ifelse(tumors$celltype %in% c("Tumor1", "Tumor2", "Tumor3", "Tumor4", "Tumor5", "Tumor6"), "Tumor",
+                                ifelse(tumors$celltype %in% c("Lymph1", "Lymph2"), "Lymph",
+                                       ifelse(tumors$celltype == "Fibroblast", "Fibroblast", "Myel"))))
 
 immune_fibro <- readRDS("/tgen_labs/banovich/BCTCSF/Heini/13384_Tumor/tumor_immune_fibroblast_reclustered_DoubletFinder.rds")
 
@@ -155,3 +164,94 @@ VlnPlot(lymph,
 
 ```
 
+### NT receptors
+
+```{r, message = F, warning = F, fig.width = 8, fig.height = 16}
+
+DotPlot(tumors,
+        group.by = "celltype",
+        features = unique(nt_receptors$Gene)) +
+  theme_classic() +
+  coord_flip() +
+  RotatedAxis()
+
+DotPlot(immune_fibro,
+        group.by = "celltype",
+        features = unique(nt_receptors$Gene)) +
+  theme_classic() +
+  coord_flip()
+
+```
+
+```{r, message = F, warning = F, fig.width = 18, fig.height = 64}
+
+VlnPlot(tumors,
+        group.by = "celltype",
+        features = unique(nt_receptors$Gene),
+        pt.size = 0,
+        cols = tumor_celltype_col,
+        ncol = 3,
+        slot = "data") &
+  theme_classic() &
+  NoLegend() &
+  RotatedAxis()
+
+
+VlnPlot(immune_fibro,
+        group.by = "celltype",
+        features = unique(nt_receptors$Gene),
+        pt.size = 0,
+        cols = immune_fibro_celltype_col,
+        ncol = 3,
+        slot = "data") &
+  theme_classic() &
+  NoLegend()
+
+
+```
+
+### Histamine synthesis
+
+```{r, message = F, warning = F, fig.width = 8, fig.height = 6}
+
+DotPlot(tumors,
+        group.by = "celltype",
+        features = unique(histamine_synthesis$Gene)) +
+  theme_classic() +
+  coord_flip() +
+  RotatedAxis()
+
+DotPlot(immune_fibro,
+        group.by = "celltype",
+        features = unique(histamine_synthesis$Gene)) +
+  theme_classic() +
+  coord_flip()
+
+```
+
+```{r, message = F, warning = F, fig.width = 18, fig.height = 12}
+
+VlnPlot(tumors,
+        group.by = "celltype",
+        features = unique(histamine_synthesis$Gene),
+        pt.size = 0,
+        cols = tumor_celltype_col,
+        ncol = 3,
+        slot = "data") &
+  theme_classic() &
+  NoLegend() &
+  RotatedAxis()
+
+
+VlnPlot(immune_fibro,
+        group.by = "celltype",
+        features = unique(histamine_synthesis$Gene),
+        pt.size = 0,
+        cols = immune_fibro_celltype_col,
+        ncol = 3,
+        slot = "data") &
+  theme_classic() &
+  NoLegend()
+
+
+```

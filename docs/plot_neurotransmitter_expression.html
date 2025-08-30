@@ -395,7 +395,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-08-12
+<strong>Last updated:</strong> 2025-08-30
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -433,10 +433,10 @@ changes </a>
 <div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R
-Markdown file created these results, you’ll want to first commit it to
-the Git repo. If you’re still working on the analysis, you can ignore
-this warning. When you’re finished, you can run
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
 <code>wflow_publish</code> to commit the R Markdown file and build the
 HTML.</p>
 </div>
@@ -571,13 +571,15 @@ code/CART_plot_functions.R
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong8fc37bd">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomheininGBMneurotransmitterstree2cf309b04e57434563bdd4b95744161a1336ed18targetblank2cf309ba">
 <span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>Repository version:</strong> 8fc37bd
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/heinin/GBM_neurotransmitters/tree/2cf309b04e57434563bdd4b95744161a1336ed18" target="_blank">2cf309b</a>
 </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong8fc37bd"
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomheininGBMneurotransmitterstree2cf309b04e57434563bdd4b95744161a1336ed18targetblank2cf309ba"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -586,7 +588,8 @@ and connecting the code version to the results is critical for
 reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version 8fc37bd.
+The results in this page were generated with repository version
+<a href="https://github.com/heinin/GBM_neurotransmitters/tree/2cf309b04e57434563bdd4b95744161a1336ed18" target="_blank">2cf309b</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -600,10 +603,8 @@ depends on. Below is the status of the Git repository when the results
 were generated:
 </p>
 <pre><code>
-Untracked files:
-    Untracked:  analysis/plot_neurotransmitter_expression.Rmd
-    Untracked:  code/13384_tumor_ms_themes.R
-    Untracked:  code/CART_plot_functions.R
+Unstaged changes:
+    Modified:   analysis/plot_neurotransmitter_expression.Rmd
 
 </code></pre>
 <p>
@@ -618,10 +619,75 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with
-<code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were
+made to the R Markdown
+(<code>analysis/plot_neurotransmitter_expression.Rmd</code>) and HTML
+(<code>docs/plot_neurotransmitter_expression.html</code>) files. If
+you’ve configured a remote Git repository (see
+<code>?wflow_git_remote</code>), click on the hyperlinks in the table
+below to view the files as they were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/heinin/GBM_neurotransmitters/blob/2cf309b04e57434563bdd4b95744161a1336ed18/analysis/plot_neurotransmitter_expression.Rmd" target="_blank">2cf309b</a>
+</td>
+<td>
+heinin
+</td>
+<td>
+2025-08-13
+</td>
+<td>
+First commit
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/heinin/GBM_neurotransmitters/2cf309b04e57434563bdd4b95744161a1336ed18/docs/plot_neurotransmitter_expression.html" target="_blank">2cf309b</a>
+</td>
+<td>
+heinin
+</td>
+<td>
+2025-08-13
+</td>
+<td>
+First commit
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -662,11 +728,20 @@ source(&quot;/home/hnatri/GBM_neurotransmitters/code/CART_plot_functions.R&quot;
 markers_by_group  &lt;- gs4_get(&quot;https://docs.google.com/spreadsheets/d/15X7l9AuNF3vqPQ3ajuB05q8QKK7UZJi9DgYLUPzYkLw/edit?usp=sharing&quot;)
 potassium_channels &lt;- read_sheet(markers_by_group, sheet = &quot;Potassium channels&quot;)
 potassium_response &lt;- read_sheet(markers_by_group, sheet = &quot;Potassium response&quot;)
-dopamine_synthesis &lt;- read_sheet(markers_by_group, sheet = &quot;Dopamine synthesis&quot;)</code></pre>
+dopamine_synthesis &lt;- read_sheet(markers_by_group, sheet = &quot;Dopamine synthesis&quot;)
+nt_receptors &lt;- read_sheet(markers_by_group, sheet = &quot;NT receptors&quot;)
+histamine_synthesis &lt;- read_sheet(markers_by_group, sheet = &quot;Histamine synthesis&quot;)</code></pre>
 </div>
 <div id="import-data" class="section level2">
 <h2>Import data</h2>
-<pre class="r"><code>immune_fibro &lt;- readRDS(&quot;/tgen_labs/banovich/BCTCSF/Heini/13384_Tumor/tumor_immune_fibroblast_reclustered_DoubletFinder.rds&quot;)
+<pre class="r"><code>tumors &lt;- readRDS(&quot;/tgen_labs/banovich/BCTCSF/Heini/13384_Tumor/tumor_integrated_UPN109pre_noUPN208_soupX_snn_metadata_no4_7_11.rds&quot;)
+
+tumors$lineage &lt;- ifelse(tumors$celltype %in%  c(&quot;Olig1&quot;, &quot;Olig2&quot;), &quot;Olig&quot;,
+                         ifelse(tumors$celltype %in% c(&quot;Tumor1&quot;, &quot;Tumor2&quot;, &quot;Tumor3&quot;, &quot;Tumor4&quot;, &quot;Tumor5&quot;, &quot;Tumor6&quot;), &quot;Tumor&quot;,
+                                ifelse(tumors$celltype %in% c(&quot;Lymph1&quot;, &quot;Lymph2&quot;), &quot;Lymph&quot;,
+                                       ifelse(tumors$celltype == &quot;Fibroblast&quot;, &quot;Fibroblast&quot;, &quot;Myel&quot;))))
+
+immune_fibro &lt;- readRDS(&quot;/tgen_labs/banovich/BCTCSF/Heini/13384_Tumor/tumor_immune_fibroblast_reclustered_DoubletFinder.rds&quot;)
 
 immune_fibro$celltype &lt;- factor(immune_fibro$celltype,
                                 levels = c(paste0(&quot;M&quot;, seq(1, 9, by = 1)),
@@ -686,6 +761,43 @@ lymph &lt;- subset(immune_fibro, subset = celltype %in% c(&quot;B1&quot;, paste0
   theme_classic() +
   coord_flip()</code></pre>
 <p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-5-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/heinin/GBM_neurotransmitters/blob/2cf309b04e57434563bdd4b95744161a1336ed18/docs/figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-5-1.png" target="_blank">2cf309b</a>
+</td>
+<td>
+heinin
+</td>
+<td>
+2025-08-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>VlnPlot(lymph,
         group.by = &quot;celltype&quot;,
         features = unique(potassium_channels$Gene),
@@ -696,6 +808,43 @@ lymph &lt;- subset(immune_fibro, subset = celltype %in% c(&quot;B1&quot;, paste0
   theme_classic() &amp;
   NoLegend()</code></pre>
 <p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-6-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/heinin/GBM_neurotransmitters/blob/2cf309b04e57434563bdd4b95744161a1336ed18/docs/figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-6-1.png" target="_blank">2cf309b</a>
+</td>
+<td>
+heinin
+</td>
+<td>
+2025-08-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="potassium-response" class="section level3">
 <h3>Potassium response</h3>
@@ -705,6 +854,43 @@ lymph &lt;- subset(immune_fibro, subset = celltype %in% c(&quot;B1&quot;, paste0
   theme_classic() +
   coord_flip()</code></pre>
 <p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-7-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
+Past versions of unnamed-chunk-7-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-7-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/heinin/GBM_neurotransmitters/blob/2cf309b04e57434563bdd4b95744161a1336ed18/docs/figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-7-1.png" target="_blank">2cf309b</a>
+</td>
+<td>
+heinin
+</td>
+<td>
+2025-08-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>VlnPlot(lymph,
         group.by = &quot;celltype&quot;,
         features = unique(potassium_response$Genes),
@@ -715,6 +901,43 @@ lymph &lt;- subset(immune_fibro, subset = celltype %in% c(&quot;B1&quot;, paste0
   theme_classic() &amp;
   NoLegend()</code></pre>
 <p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-8-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-8-1">
+Past versions of unnamed-chunk-8-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-8-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/heinin/GBM_neurotransmitters/blob/2cf309b04e57434563bdd4b95744161a1336ed18/docs/figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-8-1.png" target="_blank">2cf309b</a>
+</td>
+<td>
+heinin
+</td>
+<td>
+2025-08-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="dopamine-synthesis" class="section level3">
 <h3>Dopamine synthesis</h3>
@@ -724,6 +947,43 @@ lymph &lt;- subset(immune_fibro, subset = celltype %in% c(&quot;B1&quot;, paste0
   theme_classic() +
   coord_flip()</code></pre>
 <p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-9-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
+Past versions of unnamed-chunk-9-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-9-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/heinin/GBM_neurotransmitters/blob/2cf309b04e57434563bdd4b95744161a1336ed18/docs/figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-9-1.png" target="_blank">2cf309b</a>
+</td>
+<td>
+heinin
+</td>
+<td>
+2025-08-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>VlnPlot(lymph,
         group.by = &quot;celltype&quot;,
         features = unique(dopamine_synthesis$Gene),
@@ -734,6 +994,117 @@ lymph &lt;- subset(immune_fibro, subset = celltype %in% c(&quot;B1&quot;, paste0
   theme_classic() &amp;
   NoLegend()</code></pre>
 <p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-10-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/heinin/GBM_neurotransmitters/blob/2cf309b04e57434563bdd4b95744161a1336ed18/docs/figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-10-1.png" target="_blank">2cf309b</a>
+</td>
+<td>
+heinin
+</td>
+<td>
+2025-08-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="nt-receptors" class="section level3">
+<h3>NT receptors</h3>
+<pre class="r"><code>DotPlot(tumors,
+        group.by = &quot;celltype&quot;,
+        features = unique(nt_receptors$Gene)) +
+  theme_classic() +
+  coord_flip() +
+  RotatedAxis()</code></pre>
+<p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-11-1.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DotPlot(immune_fibro,
+        group.by = &quot;celltype&quot;,
+        features = unique(nt_receptors$Gene)) +
+  theme_classic() +
+  coord_flip()</code></pre>
+<p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-11-2.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>VlnPlot(tumors,
+        group.by = &quot;celltype&quot;,
+        features = unique(nt_receptors$Gene),
+        pt.size = 0,
+        cols = tumor_celltype_col,
+        ncol = 3,
+        slot = &quot;data&quot;) &amp;
+  theme_classic() &amp;
+  NoLegend() &amp;
+  RotatedAxis()</code></pre>
+<p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-12-1.png" width="1728" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>VlnPlot(immune_fibro,
+        group.by = &quot;celltype&quot;,
+        features = unique(nt_receptors$Gene),
+        pt.size = 0,
+        cols = immune_fibro_celltype_col,
+        ncol = 3,
+        slot = &quot;data&quot;) &amp;
+  theme_classic() &amp;
+  NoLegend()</code></pre>
+<p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-12-2.png" width="1728" style="display: block; margin: auto;" /></p>
+</div>
+<div id="histamine-synthesis" class="section level3">
+<h3>Histamine synthesis</h3>
+<pre class="r"><code>DotPlot(tumors,
+        group.by = &quot;celltype&quot;,
+        features = unique(histamine_synthesis$Gene)) +
+  theme_classic() +
+  coord_flip() +
+  RotatedAxis()</code></pre>
+<p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-13-1.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DotPlot(immune_fibro,
+        group.by = &quot;celltype&quot;,
+        features = unique(histamine_synthesis$Gene)) +
+  theme_classic() +
+  coord_flip()</code></pre>
+<p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-13-2.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>VlnPlot(tumors,
+        group.by = &quot;celltype&quot;,
+        features = unique(histamine_synthesis$Gene),
+        pt.size = 0,
+        cols = tumor_celltype_col,
+        ncol = 3,
+        slot = &quot;data&quot;) &amp;
+  theme_classic() &amp;
+  NoLegend() &amp;
+  RotatedAxis()</code></pre>
+<p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-14-1.png" width="1728" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>VlnPlot(immune_fibro,
+        group.by = &quot;celltype&quot;,
+        features = unique(histamine_synthesis$Gene),
+        pt.size = 0,
+        cols = immune_fibro_celltype_col,
+        ncol = 3,
+        slot = &quot;data&quot;) &amp;
+  theme_classic() &amp;
+  NoLegend()</code></pre>
+<p><img src="figure/plot_neurotransmitter_expression.Rmd/unnamed-chunk-14-2.png" width="1728" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
